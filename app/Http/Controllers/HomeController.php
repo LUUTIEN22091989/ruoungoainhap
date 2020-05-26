@@ -28,7 +28,7 @@ class HomeController extends Controller
         //bài viết
         $articles = Article::where('a_active', 1)->select('id', 'a_slug', 'a_name', 'a_avatar', 'a_description')->orderByDesc('id')->limit(4)->get();
         //sp bán chay
-        $productsPay = Product::where('pro_status', 1)->where('pro_pay', '>', 0)->orderByDesc('id')->limit(20)->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->get();
+        $productsPay = Product::where('pro_status', 1)->where('pro_pay', '>', 0)->orderByDesc('id')->limit(18)->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->get();
         // đánh giá
         $ratings = Rating::where('r_status', 1)->orderByDesc('id')->limit(4)->get();
 
@@ -81,17 +81,17 @@ class HomeController extends Controller
     	$key = $request->key;
 
     	$products = Product::where('pro_status', 1)->where('pro_name', 'like', '%'.$key.'%')->orWhere('pro_slug', 'like', '%'.Str::slug($key).'%')->get();
-
+        
         $viewData = [
-            'products'       => $products,
-            'meta_desc'      => $meta_desc,
-            'meta_author'    => $meta_author,
-            'meta_keywords'   => $meta_keywords,
-            'meta_canonical' => $meta_canonical,
-            'query'      => $request->query(),
-            'title_page'     => "Danh sách tìm kiếm"
+                'products'       => $products,
+                'meta_desc'      => $meta_desc,
+                'meta_author'    => $meta_author,
+                'meta_keywords'   => $meta_keywords,
+                'meta_canonical' => $meta_canonical,
+                'query'      => $request->query(),
+                'title_page'     => "Danh sách tìm kiếm"
         ];
 
-    	return view('pages.search_products' ,$viewData);
+        return view('pages.search_products' ,$viewData);
     }
 }

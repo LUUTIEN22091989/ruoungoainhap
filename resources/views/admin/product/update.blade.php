@@ -26,12 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                    <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số tiền" name="pro_price" class="form-control" id="" placeholder="Tên danh mục" value="{{ $product->pro_price }}">
-                                    @if($errors->has('pro_name'))
-                                     <span class="error-text text-danger">
-                                            {{$errors->first('pro_name')}}
-                                     </span>
-                                    @endif
+                                    <input type="text" name="pro_price" class="form-control" id="" placeholder="Tên danh mục" value="{{ $product->pro_price }}">
                                 </div>
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label><br>
@@ -109,7 +104,7 @@
                                 <div class="form-group row">
                                         <div class="col-sm-6">
                                             <label for="pro_sale">% Sale</label>
-                                            <input value="{{ $product->pro_sale }}" type="number" name="pro_sale" class="form-control" id="pro_sale">
+                                            <input min="0" value="{{ $product->pro_sale }}" type="number" name="pro_sale" class="form-control" id="pro_sale">
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="pro_number">Số lượng</label>

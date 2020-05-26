@@ -42,7 +42,13 @@
                   <img src="{{ asset($item->pro_image) }}" width="70" height="70">
               @endif
             </td>
-            <td>{{ number_format($item->pro_price) }}đ</td>
+            <td>
+              @if ($item->pro_price)
+               {{ number_format($item->pro_price) }}đ
+              @else
+                Liên hệ
+              @endif
+            </td>
             <td>{{ $item->category->c_name }}</td>
             <td>
               @if( $item->pro_status == 1 )

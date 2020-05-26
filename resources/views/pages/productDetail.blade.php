@@ -67,11 +67,15 @@
                     <form action="{{ route('post.ShoppingCart', $product->id) }}" method="post" style="padding: 5px;background: #ebebeb">
                         @csrf
                         <span>
-                        @if($product->pro_sale)
-                        <span style="color: blue;">{{ number_format(($product->pro_price*(100-$product->pro_sale))/100) }}đ</span>
-                        <span style="color: red;"><del>{{ number_format($product->pro_price) }}đ</del></span><br>
+                        @if($product->pro_price)
+                            @if($product->pro_sale)
+                            <span style="color: blue;">{{ number_format(($product->pro_price*(100-$product->pro_sale))/100) }}đ</span>
+                            <span style="color: red;"><del>{{ number_format($product->pro_price) }}đ</del></span><br>
+                            @else
+                            <span style="color: blue;">{{ number_format($product->pro_price) }}đ</span><br>
+                            @endif
                         @else
-                        <span style="color: blue;">{{ number_format($product->pro_price) }}đ</span><br>
+                            <span>Liên hệ báo giá</span>
                         @endif
                         <button style="margin-left: 0px;" type="submit" href="" class="btn btn-fefault cart add-shopping-cart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                         </span>
@@ -167,11 +171,16 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center" style="position: relative;">
                                         <img class="img-lazyload" data-original="{{ asset( $item->pro_image )}}" alt="{{ $item->pro_name}}" style="height: 170px;" />
-                                        @if($item->pro_sale)
-                                        <h5 style="color: blue;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
-                                        <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
+                                        @if($item->pro_price)
+                                            @if($item->pro_sale)
+                                                <h5 style="color: blue;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
+                                                <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
+                                            @else
+                                                <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
+                                                <h5></h5>
+                                            @endif
                                         @else
-                                        <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
+                                            <h5 style="color:#FE980F ">Liên hệ nhận báo giá</h5>
                                         @endif
                                         <p>{{ $item->pro_name }}</p>
                                         @if($item->pro_sale)
@@ -216,13 +225,17 @@
                                         <div class="col-xs-8">
                                             <a href="{{ route('get.ProductDetail', $item->pro_slug.'-'.$item->id)}}"><p style="margin-bottom: -5px;color: black">{{ $item->pro_name }}
                                             </p></a>
-                                            @if($item->pro_sale)
-                                            <div style="display: flex;">
-                                                <h5 style="color: blue;margin-right: 20px;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
-                                                <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
-                                            </div>
+                                            @if($item->pro_price)
+                                                @if($item->pro_sale)
+                                                <div style="display: flex;">
+                                                    <h5 style="color: blue;margin-right: 20px;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
+                                                    <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
+                                                </div>
+                                                @else
+                                                    <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
+                                                @endif
                                             @else
-                                                <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
+                                                <h5 style="color:#FE980F ">Liên hệ nhận báo giá</h5>
                                             @endif
                                         </div>
                                     </div>

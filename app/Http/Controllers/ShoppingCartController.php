@@ -112,7 +112,7 @@ class ShoppingCartController extends Controller
                    }
               //3 update số lượng
               \Cart::update($rowID, $qty);
-              return response(['messages' => 'cập nhật thành công']);
+              return response(['messages' => 'Bạn có muốn thay đổi?']);
           }
           
     }

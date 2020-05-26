@@ -74,16 +74,21 @@ class AdminTransactionController extends Controller
     // xử lý trạng thái bàn giao hay chưa bàn giao, hủy
     public function getAction($action, $id)
     {
-        $order = Order::where('od_transaction_id', $id)->first();
-        $transaction = Transaction::find($id);
        if ($id) {
+              $orders = Order::where('od_transaction_id', $id)->get();
+              $transaction = Transaction::find($id);
+
               switch ($action) {
                   case 'success': //giao hangf thanh cong
                     $transaction->tst_status = 2;
-                    // Tăng cột pro_pay của sản phẩm lên 1 đơn vị 
-                    \DB::table('products')->where('id', $order->od_product_id)->increment('pro_pay');
-                    // Tự động giảm số lượng tồn kho pro_number khi thanh toán
-                    \DB::table('products')->where('id', $order->od_product_id)->decrement('pro_number', $order->od_qty);
+                    foreach ($orders as $value) {
+                        $id = $value->od_product_id;
+                        $od_qty = $value->od_qty;
+                        // Tăng cột pro_pay của các sản phẩm trong đơn lên 1 đơn vị 
+                        \DB::table('products')->where('id', $id)->increment('pro_pay');
+                        // Tự động giảm số lượng tồn kho pro_number khi thanh toán
+                        \DB::table('products')->where('id', $id)->decrement('pro_number', $od_qty);
+                    }
                       break;
                   case 'cancle': // nếu hủy
                     $transaction->tst_status = 3;

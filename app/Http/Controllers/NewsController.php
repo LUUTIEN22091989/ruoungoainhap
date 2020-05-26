@@ -17,9 +17,11 @@ class NewsController extends Controller
         $meta_keywords = "Điện thoại di động, dtdd, smartphone, tablet, máy tính bảng, Laptop, máy tính xách tay, phụ kiện điện thoại, tin công nghệ";
         $meta_canonical = $request->url();
         // end seo
-        $articles = Article::where('a_active', 1)->select('id', 'a_name', 'a_slug','a_avatar', 'a_description', 'created_at')->orderByDesc('id')->paginate(10);
-        //sp nổi bật
-        $productHot = Product::where(['pro_status' => 1, 'pro_hot' => 1])->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale')->orderByDesc('id')->limit(8)->get();
+        $articles = Article::where('a_active', 1)->select('id', 'a_name', 'a_slug','a_avatar', 'a_description', 'created_at')->orderByDesc('id')->paginate(6);
+        //sp đang nổi bật
+        $productHot = Product::where(['pro_status' => 1, 'pro_hot' => 1])->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale')->orderByDesc('id')->limit(12)->get();
+        //show tin tức nổi bật
+            $articlesHot = Article::where(['a_active'=> 1, 'a_hot' => 1])->select('id', 'a_name', 'a_slug', 'a_avatar', 'created_at')->orderByDesc('id')->limit(12)->get();
 
         $viewData = [
             'meta_desc'         => $meta_desc,
@@ -28,6 +30,7 @@ class NewsController extends Controller
             'meta_canonical'    => $meta_canonical,
             'articles'          => $articles,
             'productHot'        => $productHot,
+            'articlesHot'       => $articlesHot,
             'title_page'        => "Tin tức"
     	];
         

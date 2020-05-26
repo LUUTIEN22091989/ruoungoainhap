@@ -18,7 +18,7 @@ class ProductDetailController extends Controller
     		$product = Product::findOrFail($id);
             $ratings = Rating::where(['r_status' => 1, 'r_product_id' => $id ])->orderByDesc('id')->limit(10)->get();
             // show sp nổi bật
-            $productsHot = Product::where(['pro_status'=> 1, 'pro_hot' => 1])->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->orderByDesc('id')->limit(12)->get();
+            $productsHot = Product::where(['pro_status'=> 1, 'pro_hot' => 1])->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->orderByDesc('id')->limit(20)->get();
             //show tin tức nổi bật
             $articlesHot = Article::where(['a_active'=> 1, 'a_hot' => 1])->select('id', 'a_name', 'a_slug', 'a_avatar', 'created_at')->orderByDesc('id')->limit(12)->get();
                 // seo

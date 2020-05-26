@@ -25,7 +25,6 @@ class RequestAdminProduct extends FormRequest
     {
         return [
             'pro_name' => 'required|max:190|min:3|unique:products,pro_name,'.$this->id,
-            'pro_price' => 'required',
             'pro_desc' => 'required',
             'pro_content' => 'required',
         ];
@@ -38,7 +37,6 @@ class RequestAdminProduct extends FormRequest
             'pro_name.unique' => 'Danh mục đã tồn tại',
             'pro_name.max' => 'Tên không được quá 190 ký tự',
              'pro_name.min' => 'Tên phải nhiều 3 ký tự',
-             'pro_price.required' => 'Trường này không được để trống',
              'pro_desc.required' => 'Trường này không được để trống',
              'pro_content.required' => 'Trường này không được để trống',
         ];

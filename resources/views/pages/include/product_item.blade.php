@@ -4,12 +4,16 @@
                     <div class="single-products">
                         <div class="productinfo text-center" style="position: relative;">
                             <img class="img-lazyload" data-original="{{ asset( $item->pro_image )}}" alt="{{ $item->pro_name}}" style="height: 170px;" />
-                            @if($item->pro_sale)
-                                <h5 style="color: blue;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
-                                <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
+                            @if($item->pro_price)
+                                @if($item->pro_sale)
+                                    <h5 style="color: blue;">{{ number_format(($item->pro_price*(100-$item->pro_sale))/100) }}đ</h5>
+                                    <h5 style="color: red;"><del>{{ number_format($item->pro_price) }}đ</del></h5>
+                                @else
+                                    <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
+                                    <h5></h5>
+                                @endif
                             @else
-                                <h5 style="color: blue;">{{ number_format($item->pro_price) }}đ</h5>
-                                <h5></h5>
+                                <h5 style="color:#FE980F ">Liên hệ nhận báo giá</h5>
                             @endif
                             <p>{{ $item->pro_name }}</p>
                             @if($item->pro_sale)
