@@ -171,6 +171,7 @@ class ShoppingCartController extends Controller
             foreach ($shopping as $key => $item) {
                 //Lưu chi tiết đơn hàng vào DB
                 Order::insert([
+                    'od_code'           => 'DH-'.$transactionID.'-'.date('d').date('m').date('Y'),
                     'od_transaction_id' => $transactionID,
                     'od_product_id'     => $item->id,
                     'od_sale'           => $item->options->sale,
