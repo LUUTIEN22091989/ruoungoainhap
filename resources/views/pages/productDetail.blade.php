@@ -12,7 +12,7 @@
         <div class="product-details">
             <!--product-details-->
             <div class="col-sm-6">
-                <div class="view-product" style="position: relative;">
+                <div class="view-product single-product-image" style="position: relative;">
                     <img src="{{ asset($product->pro_image)}}" alt="" />
                     @if($product->pro_sale)
                     <span style="position: absolute;background: #FE980F;top: 0px;right: 0px;border-radius: 50%;padding: 5px;color: blue">
@@ -23,29 +23,17 @@
                 <div id="similar-product" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <a href=""><img style="width: 70px" src="{{ asset($product->pro_image)}}" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar2.jpg" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar3.jpg" alt=""></a>
-                        </div>
-                        <div class="item">
-                            <a href=""><img src="/frontend/images/product-details/similar1.jpg" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar2.jpg" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar3.jpg" alt=""></a>
-                        </div>
-                        <div class="item">
-                            <a href=""><img src="/frontend/images/product-details/similar1.jpg" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar2.jpg" alt=""></a>
-                            <a href=""><img src="/frontend/images/product-details/similar3.jpg" alt=""></a>
-                        </div>
+                        <ul class="nav nav-tabs select-product-tab bxslider" style="display: flex;">
+                                <li class="image-room item active">
+                                    <img style="width: 80px;height: 80px;cursor: pointer;" src="{{ asset( $product->pro_image )}}" alt="{{ $product->pro_name}}" />
+                                </li>
+                                @foreach( $proImages as $item)
+                                <li class="image-room item">
+                                    <img style="width: 80px;height: 80px;cursor: pointer;" src="/uploads/product/album/{{ $item->pi_slug }}" alt="pro-thumbnail" />
+                                </li>
+                                @endforeach
+                        </ul>
                     </div>
-                    <!-- Controls -->
-                    <a class="left item-control" href="#similar-product" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="right item-control" href="#similar-product" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                    </a>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -269,4 +257,16 @@
         </div>
     </div>
 </div>
+@stop
+@section('script')
+ <script type="text/javascript">
+     $(function(){
+
+        // dùng cho hiển thị ảnh khi click vào từng ảnh nhỏ
+            $('.image-room').on('click', function() {
+                var imgUrl = $(this).children('img')[0].src;
+                $('.single-product-image').children('img')[0].src = imgUrl;
+            })
+    })
+ </script>
 @stop

@@ -16,6 +16,9 @@ class ProductDetailController extends Controller
 
     	if ($id) {
     		$product = Product::findOrFail($id);
+            //lấy album ảnh
+            $proImages = \DB::table('products_image')->where('pi_product_id', $id)->get();
+  
             $ratings = Rating::where(['r_status' => 1, 'r_product_id' => $id ])->orderByDesc('id')->limit(10)->get();
             // show sp nổi bật
             $productsHot = Product::where(['pro_status'=> 1, 'pro_hot' => 1])->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->orderByDesc('id')->limit(20)->get();
@@ -34,6 +37,7 @@ class ProductDetailController extends Controller
                 'productsHot'    => $productsHot,
                 'ratings'        => $ratings,
                 'articlesHot'    => $articlesHot,
+                'proImages'      => $proImages,
                 'meta_desc'      => $meta_desc,
                 'meta_author'    => $meta_author,
                 'meta_keywords'   => $meta_keywords,
