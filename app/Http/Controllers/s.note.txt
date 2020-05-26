@@ -1,0 +1,6 @@
+in ra pdf
+$ composer require barryvdh/laravel-dompdf
+
+Barryvdh\DomPDF\ServiceProvider::class
+
+'PDF' => Barryvdh\DomPDF\Facade::class

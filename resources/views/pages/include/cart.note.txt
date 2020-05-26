@@ -1,0 +1,72 @@
+@foreach( $shopping as $key => $item )
+
+								<tr>
+									<td class="cart_product">
+										<a href="{{ route('get.ProductDetail', $item->name.'-'.$item->id)}}"><img style="width: 80px;" src="{{ asset($item->options->image) }}" alt="{{ $item->name}}"></a>
+									</td>
+									<td class="cart_description">
+										<h4 style="margin-top: -10px" class="text-center"><a style="font-size: 15px;" href="{{ route('get.ProductDetail', $item->name.'-'.$item->id)}}">{{ $item->name }}</a></h4>
+									</td>
+									<td class="cart_price">
+										<p>{{ number_format($item->price) }}đ</p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<!-- Update bằng ajax -->
+											<input style="width: 40%;text-align: center;" class="cart-plus-minus" type="number" value="{{ $item->qty }}" min="0"><br>
+											<a style="margin-top: 0px; width: 40%; font-size: 12px;" href="{{ route('ajax.update.qty', $key)}}" data-id={{$key}} data-id-product="{{ $item->id }}" style="margin-top: 5px" class="btn btn-primary js-update-qty"> Cập nhật số lượng</a>
+											<!-- Update bằng Cart -->
+											<!-- <form action="{{ route('get.shopping.update-qty')}}" method="post">
+												@csrf
+												<input style="width: 20%" class="cart_quantity_input" type="number" name="quantity" value="{{ $item->qty}}" autocomplete="off" min="0">
+												<input type="hidden" name="rowId_cart" value="{{ $item->rowId }}" class="">
+												<button style="margin-top: 0px; margin-left: -50px; font-size: 13px;" type="submit" name="update_qty" class="btn btn-primary">Cập nhật số lượng</button>
+											</form> -->
+										</div>
+									</td>
+									<td class="cart_total">
+										<h4 class="cart_total_price">{{ number_format($item->price * $item->qty ) }}đ</h4>
+									</td>
+									<td class="">
+										<span>
+											<!-- xóa bằng Cart -->
+											<!-- <a data-id="" class="remove-to-cart" href="{{ route('get.shopping.delete', $item->rowId )}}">Xóa</a> -->
+											<!-- xóa bằng ajax -->
+											<a href="{{ route('ajax.shopping.delete', $key) }}" class="cart_quantity_delete" title="Delete">Xóa</a>
+										</span>
+									</td>
+								</tr>
+								@endforeach
+
+
+
+<!-- @section('script')
+   <script type="text/javascript">
+   	  $(function () {
+   	  	// cập nhật số lượng giỏ hàng
+            //$('.item-qty').change(function () {
+            $(document).on("change", '.item-qty', function () {
+                var id = $(this).attr('data-id');
+                var quantity = $(this).val();
+                $.ajax({
+                    url: '/update',
+                    type: 'get',
+                    data: {
+                        id: id,
+                        qty : quantity
+                    }, // dữ liệu truyền sang nếu có
+                    dataType: "json", // kiểu dữ liệu trả về
+                    success: function (response) {
+                    	console.log(response);
+                    	if (response.status) {
+	                        $('#my-cart').html(response.data);
+	                    }
+                    },
+                    error: function (e) { // lỗi nếu có
+                        console.log(e.message);
+                    }
+                });
+            });
+   	  })
+   </script>
+@stop -->
