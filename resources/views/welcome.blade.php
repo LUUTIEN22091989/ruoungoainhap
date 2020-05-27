@@ -124,8 +124,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="mainmenu pull-left">
-                            <ul style="display: flex;" class="nav navbar-nav collapse navbar-collapse">
+                        <div class="mainmenu">
+                            <ul style="display: flex;width: 100%;" class="nav navbar-nav collapse navbar-collapse">
                                 @foreach( $categories as $item )
                                 <li class="col-xs-4 col-sm-3 col-lg-2" style="text-align: center;"><a style="font-size: 15px;" href="{{ route('get.ProductByCategory', $item->c_slug.'-'.$item->id)}}">{{ $item->c_name }}</a></li>
                                 @endforeach

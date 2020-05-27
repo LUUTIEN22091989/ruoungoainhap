@@ -12,8 +12,8 @@
 <section id="cart_items">
     <div class="container">
         <div class="row">
-        <div class="col-sm-2">
-                        <ol class="breadcrumb" style="font-size: 15px;background: #FE980F;margin-top:5px;margin-left: 15px;">
+        <div class="col-sm-3">
+                        <ol class="breadcrumb" style="font-size: 15px;background: #FE980F;margin-top:5px;text-align: center;">
                           <li class="active" style="color: white">{{ $category->c_name }}</li>
                         </ol>
         </div>
@@ -22,7 +22,7 @@
                  <div class="row">
                     <div class="col-sm-12 productByCategory">
                      @foreach( $_category as $item )
-                        <div class="col-sm-2 text-center {{ Request::get('ruou_vang') == Str::slug($item->c_name).'-'.$item->id ? "active" : "" }}" style="border: 1px solid #f3e8e8; padding:10px;">
+                        <div class="col-sm-2 text-center {{ Request::get('ruou_vang') == Str::slug($item->c_name).'-'.$item->id ? "active" : "" }}" style="border: 1px solid #f3e8e8; padding:10px;border-radius: 5px;">
                                 <a href="{{ request()->fullUrlWithQuery(['ruou_vang' => Str::slug($item->c_name).'-'.$item->id]) }}">
                                     <span>{{ $item->c_name }}</span>
                                 </a>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             @endif
-            <form class="col-sm-12" method="" action="" style="margin-top: 10px;">
+            <form class="col-sm-12" method="" action="" style="margin-top: 10px;padding-left: 0px;">
                     <div class="col-sm-3 search-price">
                         <select name="gia" class="form-control">
                             <option value="0">--Chọn mức giá--</option>

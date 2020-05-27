@@ -27,7 +27,7 @@ class AdminProductController extends Controller
            $products = Product::where('pro_category_id', $category);
        }
 
-       $products = $products->orderByDesc('id')->paginate(15);
+       $products = $products->orderByDesc('id')->paginate(30);
        $categories = Category::all();
 
 	   $viewData = [
