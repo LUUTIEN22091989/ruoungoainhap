@@ -12,9 +12,9 @@ class NewsController extends Controller
     public function index(Request $request)
     {
     	// seo
-        $meta_desc = "Hệ thống bán lẻ điện thoại di động, smartphone, máy tính bảng, tablet, laptop, phụ kiện chính hãng mới nhất, giá tốt, dịch vụ khách hàng được yêu thích nhất VN";
-        $meta_author = "Công ty cổ phần Điện tử 1989";
-        $meta_keywords = "Điện thoại di động, dtdd, smartphone, tablet, máy tính bảng, Laptop, máy tính xách tay, phụ kiện điện thoại, tin công nghệ";
+        $meta_desc = "Tin tức  | Siêu thị Rượu Ngoại Chính Hãng";
+        $meta_author = "Siêu thị Rượu Ngoại Chính Hãng";
+        $meta_keywords = "Tin tức rượu ngoại";
         $meta_canonical = $request->url();
         // end seo
         $articles = Article::where('a_active', 1)->select('id', 'a_name', 'a_slug','a_avatar', 'a_description', 'created_at')->orderByDesc('id')->paginate(6);
