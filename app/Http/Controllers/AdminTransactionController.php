@@ -137,7 +137,7 @@ class AdminTransactionController extends Controller
         </style>
         <h3><center>Thông tin đơn hàng '.$transaction->tst_name.'</center></h3>
         <p>Ngày in đơn: '.Carbon::now().'</p>
-        <p>Mã đơn: '.$id.'</p>
+        <p>Mã đơn: '.$transaction->tst_code.'</p>
         <p>Khách hàng: '.$transaction->tst_name.'</p>
         <p>Số điện thoại: '.$transaction->tst_phone.'</p>
         <p>Nơi nhận: '.$transaction->tst_address.'</p>

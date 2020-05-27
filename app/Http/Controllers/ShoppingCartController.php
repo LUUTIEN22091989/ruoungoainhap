@@ -143,6 +143,8 @@ class ShoppingCartController extends Controller
 
         $data = $request->except('_token');
         $data['created_at'] = Carbon::now();
+        $data['tst_code'] = 'DH-'.$data['tst_name'].'-'.date('d').date('m').date('Y');
+
         if (Session::get('cp_code')) { // nếu tồn tại mã giảm giá
             $data['tst_total_money'] = str_replace(',', '', Session::get('total_money_cuppon') );
             $data['tst_code_cuppon'] = Session::get('cp_code');
@@ -171,7 +173,6 @@ class ShoppingCartController extends Controller
             foreach ($shopping as $key => $item) {
                 //Lưu chi tiết đơn hàng vào DB
                 Order::insert([
-                    'od_code'           => 'DH-'.$transactionID.'-'.date('d').date('m').date('Y'),
                     'od_transaction_id' => $transactionID,
                     'od_product_id'     => $item->id,
                     'od_sale'           => $item->options->sale,
