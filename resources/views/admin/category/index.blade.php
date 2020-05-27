@@ -29,9 +29,9 @@
              </td>
             <td>
               @if( $item->c_status == 1 )
-                 <span class="text-ellipsis">Hiển thị</span>
+                 <a href="{{ route('admin.category.status', $item->id)}}" class="btn btn-xs btn-primary"><span class="text-ellipsis">Hiển thị</span></a>
               @else
-                <span class="text-ellipsis">Ẩn</span>
+                <a href="{{ route('admin.category.status', $item->id)}}" class="btn btn-xs btn-danger"><span class="text-ellipsis">Ẩn</span></a>
               @endif
             </td>
             <td>{{ $item->created_at }}</td>

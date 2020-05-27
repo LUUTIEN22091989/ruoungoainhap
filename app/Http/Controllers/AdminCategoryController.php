@@ -54,7 +54,6 @@ class AdminCategoryController extends Controller
     {
         $_categories = Category::where('c_parent_id', 0)->get();
     	$category = Category::where('id', $id)->first();
-
     	$viewData   = [
         	'category' => $category,
             '_categories' => $_categories
@@ -91,5 +90,13 @@ class AdminCategoryController extends Controller
     	Category::where('id', $id)->delete();
 
         return redirect()->route('admin.category.index');
+    }
+
+    public function status($id)
+    {
+        $category = Category::find($id);
+        $category->c_status =! $category->c_status;
+        $category->save();
+        return redirect()->back();
     }
 }

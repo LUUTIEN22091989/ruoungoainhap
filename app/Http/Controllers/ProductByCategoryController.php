@@ -95,8 +95,8 @@ class ProductByCategoryController extends Controller
 
             // seo
             $meta_desc      = $category->meta_desc;
-            $meta_author    = "Công ty cổ phần Điện tử 1989";
-            $meta_keywords  = $category->meta_desc;
+            $meta_author    = $category->c_name;
+            $meta_keywords  = $category->meta_keywords;
             $meta_canonical = $request->url();
             // end seo
 

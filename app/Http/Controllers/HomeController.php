@@ -15,9 +15,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         // seo
-        $meta_desc = "Hệ thống bán lẻ điện thoại di động, smartphone, máy tính bảng, tablet, laptop, phụ kiện chính hãng mới nhất, giá tốt, dịch vụ khách hàng được yêu thích nhất VN";
-        $meta_author = "Công ty cổ phần Điện tử 1989";
-        $meta_keywords = "Điện thoại di động, dtdd, smartphone, tablet, máy tính bảng, Laptop, máy tính xách tay, phụ kiện điện thoại, tin công nghệ";
+        $meta_desc = "Siêu thị rượu ngoại cao cấp là hệ thống chuyên phân phối, bán sỉ, lẻ cho các Cửa Hàng Rượu Ngoại, Rượu Tây Chính Hãng. Cam kết hàng thật 100% ,hơn 10 năm chúng tôi phục vụ bạn với sản phẩm Uy tín & chất lượng nhất. ";
+        $meta_author = "Cửa Hàng Rượu ngoại cao cấp  | Siêu thị Rượu Ngoại Chính Hãng";
+        $meta_keywords = "cửa hàng rượu ngoại cao cấp, cua hang ruou ngoai cao cap, cửa, hàng, rượu, ngoại, cao, cấp, cua, hang, ruou, ngoai, cap";
         $meta_canonical = $request->url();
         // end seo
         

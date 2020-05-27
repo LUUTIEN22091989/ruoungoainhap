@@ -186,9 +186,9 @@ class ShoppingCartController extends Controller
         // khi thanh toán thành công thì hủy luôn đơn hàng trong giỏ hàng
         \Cart::destroy();
         Session::forget('total_money_cuppon'); //hủy session sau khi thanh toán
-        Session::forget('cp_number'); //hủy session sau khi thanh toán
-        Session::forget('cp_condition'); //hủy session sau khi thanh toán
-        Session::forget('cp_code'); //hủy session sau khi thanh toán
+        Session::forget('cp_number'); 
+        Session::forget('cp_condition'); 
+        Session::forget('cp_code'); 
         Session::flash('alert', 'Đặt mua thành công, chúng tôi sẽ liên hệ lại với bạn');
 
         return redirect()->back();
@@ -224,6 +224,7 @@ class ShoppingCartController extends Controller
                             }elseif ($cuppon['cp_condition'] == 2) {
                                 $total_money_cuppon =  $tst_total_money - $cuppon['cp_number']  ;
                             }
+                            
                             Session::put('cp_code', $cuppon['cp_code'] );
                             Session::put('cp_condition', $cuppon['cp_condition'] );
                             Session::put('cp_number', $cuppon['cp_number'] );

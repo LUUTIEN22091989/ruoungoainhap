@@ -57,6 +57,7 @@ Route::group(['prefix' => 'category', 'middleware' => 'check_admin_login'], func
     Route::get('update/{id}', 'AdminCategoryController@edit')->name('admin.category.update');
     Route::post('update/{id}', 'AdminCategoryController@update');
     Route::get('delete/{id}', 'AdminCategoryController@delete')->name('admin.category.delete');
+    Route::get('status/{id}', 'AdminCategoryController@status')->name('admin.category.status');
 });
 //trang brand
 Route::group(['prefix' => 'brand', 'middleware' => 'check_admin_login'], function(){
