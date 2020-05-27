@@ -70,7 +70,6 @@ class AdminCategoryController extends Controller
     	$data['c_name']     = $request->c_name;
     	$data['c_slug']     = Str::slug($request->c_name);
     	$data['created_at'] = Carbon::now();
-    	$data['c_status']   = $request->c_status;
 
          if ($request->hasFile('c_avatar')) {
             $file               = $request->file('c_avatar');

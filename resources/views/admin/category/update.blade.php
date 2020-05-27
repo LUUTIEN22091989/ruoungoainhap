@@ -23,8 +23,8 @@
                                         <label>Danh mục cha</label>
                                         <select class="form-control" name="c_parent_id">
                                             <option value="0">-- chọn --</option>
-                                            @foreach( $_categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->c_name }}</option>
+                                            @foreach( $_categories as $cat)
+                                                <option {{ ($category->c_parent_id == $cat->id ? 'selected':'') }} value="{{ $cat->id }}">{{ $cat->c_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
