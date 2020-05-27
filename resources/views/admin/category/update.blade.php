@@ -30,11 +30,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="meta_desc">Meta Desc</label>
-                                        <textarea rows="8" id="ckeditor1" type="text" name="meta_desc" class="form-control">{{ $category->meta_desc }}</textarea>
+                                        <textarea rows="8" id="ckeditor1" type="text" name="meta_desc" class="form-control">{!! $category->meta_desc !!}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="mete_keywords">Meta Keywords</label>
-                                        <textarea rows="8" id="ckeditor2" type="text" name="meta_keywords" class="form-control">{{ $category->meta_keywords }}</textarea>
+                                        <textarea rows="8" id="ckeditor2" type="text" name="meta_keywords" class="form-control">{!! $category->meta_keywords !!}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Hình ảnh</label>
