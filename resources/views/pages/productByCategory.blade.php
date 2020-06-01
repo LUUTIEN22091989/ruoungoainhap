@@ -95,6 +95,9 @@
                     @foreach( $productsSale as $item )
                         @include('pages.include.product_item', ['item' => $item])
                     @endforeach
+                    <div class="col-sm-12">
+                        {{ $productsSale->appends($query)->links() }}
+                    </div>
                 </div>
             </div>
             <div class="col-sm-12" style="margin-top: 30px">

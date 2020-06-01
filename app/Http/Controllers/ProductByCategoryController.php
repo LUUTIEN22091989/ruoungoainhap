@@ -21,7 +21,7 @@ class ProductByCategoryController extends Controller
             $_category = Category::where(['c_parent_id' => $id])->get(); // lấy danh mục cấp 2
             $countrys = Country::where('co_status', 1)->select('id', 'co_name')->get(); // lấy xuất xứ
             // sp đang khuyến mãi 
-            $productsSale = Product::where('pro_status', 1)->where('pro_sale', '>', 0)->orderByDesc('pro_sale')->limit(12)->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->get();
+            $productsSale = Product::where('pro_status', 1)->where('pro_sale', '>', 0)->orderByDesc('pro_sale')->limit(12)->select('id', 'pro_name', 'pro_slug', 'pro_image', 'pro_price', 'pro_sale', 'pro_code')->paginate(24);
       
              //lấy sản phẩm theo từng danh mục
             if ($category) {

@@ -51,8 +51,12 @@ class ShoppingCartController extends Controller
          //2 so sánh số lượng đặt mua vs sô lượng tồn kho
     	if ($product->pro_number < 1) { // số lượng = 0 thì thông báo
     		Session::flash('alert', 'Sản phẩm đã hết hàng, vui lòng thêm sản phẩm khác');
-    		return redirect()->route('get.shopping.list');
+    		return redirect()->back();
     	}
+        if ( !$product->pro_price) { // vs sản phẩm chưa có giá bán
+            Session::flash('alert', 'Vui lòng liên hệ với siêu thị');
+            return redirect()->back();
+        }
 
     	 //3 add vào giỏ hàng
     	\Cart::add([
